@@ -75,6 +75,7 @@ torusKnotObj.onValuesChange((values) => {
 // Directional light THREE.js object
 const animatedDirectionalLight = new THREE.DirectionalLight('#ff0000')
 animatedDirectionalLight.intensity = 30
+scene.add(animatedDirectionalLight)
 
 // Directional light Theatre.js object
 const animatedDirectionalLightObj = sheet.object('Directional Light', {
@@ -116,8 +117,6 @@ directionalLight.shadow.camera.left = -20
 
 scene.add(directionalLight)
 
-scene.add(animatedDirectionalLight)
-
 // RectAreaLight
 const rectAreaLight = new THREE.RectAreaLight('#ff0', 1, 50, 50)
 
@@ -127,6 +126,12 @@ rectAreaLight.position.x = -20
 rectAreaLight.lookAt(new THREE.Vector3(0, 0, 0))
 
 scene.add(rectAreaLight)
+
+// Dev helper
+const lightHelper = new THREE.DirectionalLightHelper(directionalLight)
+const animatedLightHelper = new THREE.DirectionalLightHelper(animatedDirectionalLight)
+const gridHelper = new THREE.GridHelper(200, 50)
+scene.add(lightHelper, animatedLightHelper, gridHelper)
 
 /**
  * Renderer
