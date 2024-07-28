@@ -1,6 +1,23 @@
 import './style.css'
 import * as THREE from 'three'
 
+/*** Development Mode Only ***/
+/**
+ * Theatre.js
+ */
+import studio from '@theatre/studio'
+import { getProject, types } from '@theatre/core'
+studio.initialize()
+/*** Development Mode Only ***/
+
+////////////////////////////////////////////////////////////
+// Create a project for the animation
+const project = getProject('THREE.js x Theatre.js')
+
+// Create a sheet
+const sheet = project.sheet('Animated scene')
+////////////////////////////////////////////////////////////
+
 /**
  * Camera
  */
