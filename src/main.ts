@@ -7,7 +7,7 @@ import * as THREE from 'three'
  */
 import studio from '@theatre/studio'
 import { getProject, types } from '@theatre/core'
-studio.initialize()
+studio.initialize()   /** alt + \ + . */
 /*** Development Mode Only ***/
 
 ////////////////////////////////////////////////////////////
