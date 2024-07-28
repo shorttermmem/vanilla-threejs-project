@@ -71,6 +71,23 @@ torusKnotObj.onValuesChange((values) => {
 
   mesh.rotation.set(x * Math.PI, y * Math.PI, z * Math.PI)
 })
+
+// Directional light THREE.js object
+const animatedDirectionalLight = new THREE.DirectionalLight('#ff0000')
+animatedDirectionalLight.intensity = 30
+
+// Directional light Theatre.js object
+const animatedDirectionalLightObj = sheet.object('Directional Light', {
+  intensity: types.number(
+    animatedDirectionalLight.intensity, // initial value
+    { range: [0, 30] }, // options for prop number
+  ),
+})
+
+animatedDirectionalLightObj.onValuesChange((values) => {
+  // update THREE.js object based on Theatre.js values
+  animatedDirectionalLight.intensity = values.intensity
+})
 ////////////////////////////////////////////////////////////
 
 /*
@@ -98,6 +115,8 @@ directionalLight.shadow.camera.bottom = -20
 directionalLight.shadow.camera.left = -20
 
 scene.add(directionalLight)
+
+scene.add(animatedDirectionalLight)
 
 // RectAreaLight
 const rectAreaLight = new THREE.RectAreaLight('#ff0', 1, 50, 50)
