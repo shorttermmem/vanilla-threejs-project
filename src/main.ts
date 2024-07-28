@@ -10,6 +10,8 @@ import { getProject, types } from '@theatre/core'
 studio.initialize()   /** alt + \ + . */
 /*** Development Mode Only ***/
 
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+
 ////////////////////////////////////////////////////////////
 // Create a project for the animation
 const project = getProject('THREE.js x Theatre.js')
@@ -145,6 +147,9 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.render(scene, camera)
 
+// Mouse cursor control
+const controls = new OrbitControls(camera, renderer.domElement)
+
 document.body.appendChild(renderer.domElement)
 
 /**
@@ -153,6 +158,7 @@ document.body.appendChild(renderer.domElement)
 function tick(): void {
   renderer.render(scene, camera)
 
+  controls.update()
   window.requestAnimationFrame(tick)
 }
 
