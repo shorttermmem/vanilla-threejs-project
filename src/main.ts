@@ -16,6 +16,9 @@ const project = getProject('THREE.js x Theatre.js')
 
 // Create a sheet
 const sheet = project.sheet('Animated scene')
+
+// Play the animation on repeat
+project.ready.then(() => sheet.sequence.play({ iterationCount: Infinity }))
 ////////////////////////////////////////////////////////////
 
 /**
