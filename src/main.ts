@@ -50,6 +50,26 @@ mesh.castShadow = true
 mesh.receiveShadow = true
 scene.add(mesh)
 
+////////////////////////////////////////////////////////////
+// Create a Theatre.js object with the props you want to
+// animate
+const torusKnotObj = sheet.object('Torus Knot', {
+  // Note that the rotation is in radians
+  // (full rotation: 2 * Math.PI)
+  rotation: types.compound({
+    x: types.number(mesh.rotation.x, { range: [-2, 2] }),
+    y: types.number(mesh.rotation.y, { range: [-2, 2] }),
+    z: types.number(mesh.rotation.z, { range: [-2, 2] }),
+  }),
+})
+
+torusKnotObj.onValuesChange((values) => {
+  const { x, y, z } = values.rotation
+
+  mesh.rotation.set(x * Math.PI, y * Math.PI, z * Math.PI)
+})
+////////////////////////////////////////////////////////////
+
 /*
  * Lights
  */
